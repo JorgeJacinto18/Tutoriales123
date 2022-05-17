@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MariaDB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" lang="en" content="open source html and css template">
+<meta name="author" content="mlp design">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="slidy.css">
+</head>
+
+<body>
+    <div id="menu">
+    <nav>
+    <input type="checkbox" id="show-menu" role="button">
+    <label for="show-menu" class="open"><span class="fa fa-bars"></span></label>
+    <label for="show-menu" class="close"><span class="fa fa-times"></span></label>
+    <ul id="topnav">  
+    <li><a href="Principal.html">Inicio</a></li>
+    <li><a href="index.html">Logout</a></li>
+
+    <li>
+        <ul>
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        </ul>
+    </li>
+    </ul>
+    </nav>
+    </div>
+    <div id="container">
+    <div id="pageheader">
+    <h1>Tutoriales para Informatica</h1>
+    </div>
+    
+    <div class="section">
+    <div class="pageitem">
+    <div class="col">
+    <h2>MariaDB</h2>
+    <p>Para acceder de forma remota a MariaDB debemos de tener nuestro 
+        PC con Debian, ademas de tener MariaDB instalado en nuestro dispositivo
+    </p>
+    <h3><b><i>PASOS PARA INSTALAR MARIADB</i></b></h3>
+    <p>Lo primero que debemos hacer es actualizar con : <b>apt update</b></p>
+    <p>Luego de esto debemos de instalar MariaDB con <b>apt install mariadb-server</b></p>
+
+    <h3><b>ADMITIR CONEXIONES EXTERIORES</b></h3>
+    <P>Cuando tenemos instalado MariaDB, tendremos el siguiente archivo: 
+        <b>/etc/mysql/50-server.cnf </b>
+    </P>
+    <p>Ese archivo accederemos para modificarlo con vi de la siguiente forma: 
+        <b>vi etc/mysql/50-server.cnf</b>
+    </p>
+    <p>Dentro debemos de comentar una linea que viene dentro de la siguiente forma: 
+        <b>#bind-address = 127.0.0.1</b>
+    </p>
+    <p>Una vez hecho lo anterior, debemos de reiniciar el servicio con: 
+        <b>systemctl restart mariadb</b>
+    </p>
+
+    <h3><b>USUARIO PARA ACCESO REMOTO</b></h3>
+    <p>Para crear un usuario remoto primero debemos de acceder a MySQL, para ello 
+        realizaremos lo siguiente: <b>mysql -u root</b> y estaremos dentro
+    </p>
+    <p>Aqui empezaremos de declarar un usuario remoto de la siguiente manera: 
+        <b>CREATE USER </b> 'nombre'@'%' <b>IDENTIFIED BY 'nombre'</b>
+    </p>
+    <p>Con esto habremos creado nuestro usuario remoto para que se acceda desde 
+        fuera. Se establece las contraseñas de la siguiente forma: 
+        <b>SET PASSWORD FOR 'user-name'@'%' = PASSWORD('NEW_USER_PASSWORD'); FLUSH PRIVILEGES;</b>
+    </p>
+
+    <h3><b>CONCEDER PERMISOS AL USUARIO</b></h3>
+    <p>Para dar permisos a un usuario se sigue la siguiente estructura: 
+        <b>GRANT ALL PRIVILEGES ON basedatos.* TO 'nombreU'@'%' IDENTIFIED BY 'nombreU';</b>
+    </p>
+
+    <p>Y con esto hemos terminado :D</p>
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>
